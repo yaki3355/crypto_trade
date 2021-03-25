@@ -13,7 +13,8 @@ app.use(cors());
 app.use('/api', routes);
 
 if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.resolve('public')));
+    app.use('/', express.static(path.resolve('public')));
+    app.use((req, res) => res.redirect('/'));
 }
 
 app.use((req, res) => {
